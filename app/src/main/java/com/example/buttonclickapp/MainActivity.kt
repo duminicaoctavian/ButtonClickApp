@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById<TextView>(R.id.textView)
         textView?.text = ""
         textView?.movementMethod = ScrollingMovementMethod()
+        userInput.setText("")
 
         button.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 //                }
                 textView?.append(userInput.text)
                 textView?.append("\n")
+//                userInput.text.clear()
+                userInput.setText("")
             }
         })
     }
