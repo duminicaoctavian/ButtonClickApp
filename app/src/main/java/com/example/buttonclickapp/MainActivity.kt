@@ -2,6 +2,7 @@ package com.example.buttonclickapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -21,11 +22,18 @@ class MainActivity : AppCompatActivity() {
         userInput = findViewById<EditText>(R.id.editText)
         button = findViewById<Button>(R.id.button)
         textView = findViewById<TextView>(R.id.textView)
+        textView?.text = ""
+        textView?.movementMethod = ScrollingMovementMethod()
 
         button?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 numTimesClicked += 1
-                textView?.append("\nThe button got tapped $numTimesClicked times")
+                textView?.append("The button got tapped $numTimesClicked time")
+                if (numTimesClicked != 1) {
+                    textView?.append("s\n")
+                } else {
+                    textView?.append("\n")
+                }
             }
         })
     }
